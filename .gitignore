@@ -1,0 +1,11 @@
+.DS_Store
+chirpy*
+dbconfig.ini
+htdocs/gallery
+htdocs/mokosh_gallery
+htdocs/images.v1
+*Thumbs.db
+htdocs/gfx
+htdocs/quotes
+htdocs/cgiirc
+htdocs/images/iStock_000005417655Medium.jpg

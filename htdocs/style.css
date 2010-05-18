@@ -1,0 +1,233 @@
+
+.inlineRight {
+	float: right;
+}
+
+#content a.wiki {
+	color: #0066FF;
+	text-decoration: none;
+}
+
+#content a.uncreated {
+	color: #33CCAA;
+	text-decoration: none;
+}
+
+
+.breadcrumbs {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+		padding: 0;
+		margin: 0}
+.breadcrumbs li {
+	display: inline;
+	color: white;
+}
+
+.breadcrumbs form {
+	display: inline;
+}
+ul.breadcrumbs li:before, div#navbar ul li:before {
+	content: " | ";
+	}
+ul.breadcrumbs:after div#navbar ul:after {
+	content: " | ";
+	}
+
+ul.breadcrumbs li.first:before {
+	content: "";
+}
+
+ul.breadcrumbs li a {
+	color: #4848d4;
+}
+
+
+body {
+	background: white url('images/back.jpg') repeat-x top left;
+	background-attachment: fixed;
+	color: 00004c;
+	font-family: "Georgia", serif;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	line-height: 140%;
+}
+
+a {
+	font-weight: bold;
+	color: #4848d4;
+}
+
+a img {
+	border: none;
+}
+
+div.bannersurround {
+	background: black url('images/banner.jpg') no-repeat top left;
+}
+
+div.contactcard {
+	float: left;
+	height: 300px;
+	width: 350px;
+	padding: .5em;
+	margin:  .5em;
+	border: 1px solid #0c0301;
+	background: black url('images/cardback.jpg') no-repeat top left;
+	color: white;
+}
+
+div.contactcard .Photo {
+	height: 300px;
+	float: left;
+}
+
+div.contactcard a {
+	color: white;
+}
+
+
+div.contactcard dl{
+	padding-top: 50px;
+	padding-left: 150px;
+	display: block;
+}
+
+div.contactcard .words {
+	padding-top: 50px;
+	padding-left: 150px;
+}
+
+div.contactcard dd {
+	text-align: right;
+	margin-left: 10px;
+}
+
+#banner {
+ height:	 117px;
+ width: 100%;
+ text-align: right; 
+ position: relative;
+}
+
+p.intro {
+	font-style: italic;
+	padding: 1em;
+}
+
+
+
+ul#navigation {
+
+
+	-moz-border-radius: 0 0 1em 1em;
+	border-radius: 0 0 1em 1em;
+	margin: 0 117px 3em 0;
+	padding: 0.2em 0;
+	list-style-type: none;
+	font-size: 90%;
+	text-align: right;
+	white-space: nowrap;
+}
+
+ul#navigation li {
+	display: inline;
+	margin: 0;
+	padding: 0 0 0 0.5em;
+}
+
+
+
+ul#navigation li a, ul#navigation li a:visited {
+
+	filter:alpha(opacity=35);
+	opacity: 0.35;
+	-moz-opacity:0.35;
+
+	-moz-border-radius: 0 0 1em 1em;
+	border-radius: 0 0 1em 1em;
+	background: #EEE;
+	margin: 0;
+	padding: 0.2em 1em 0.3em 1em;
+	color: black;
+	text-decoration: none;
+	border-bottom: 0.2em solid #E0E0E0;
+}
+
+ul#navigarion li a:hover {
+	filter:alpha(opacity=75);
+	opacity: 0.75;
+	-moz-opacity:0.75 !important;
+}
+
+ul#navigarion li a.section, ul#navigation li a.section:visited {
+	filter:alpha(opacity=55);
+	opacity: 0.55;
+	-moz-opacity:0.55;
+}
+
+
+#content {
+	padding-left: 2em;
+	padding-top: 2em;
+}
+
+ ul#navigation {
+	position: absolute;
+	top: 115px;
+	left: 0;
+}
+
+#navigation li {
+	display: inline;
+	padding-left: 20px;
+}
+
+#footer {
+	color: #222;
+}
+#footer a {
+	color: #222;
+}
+
+a.gallerylink {
+	display: block;
+	height: 200px;
+	margin-top: 33px;
+	width: 140px;
+	position: absolute;
+	text-decoration: none;
+}
+
+.contactcard {
+        position: relative;
+}
+
+.contactcard h2 {
+        font-size: 40pt; position: absolute; top: 0; left: 0;
+        padding: 0;
+        margin: 0;
+        line-height: 50px;
+	width: 100%;
+	text-shadow: 2px 2px 2px #000;
+}
+
+
+@font-face {
+ font-family: MyCustomFont;
+ src: url("font/renaissance.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: MyCustomFont;
+ src: url("font/renaissance.ttf") /* TTF file for CSS2 browsers */
+}
+
+.scripted {
+	font-weight: normal;
+        font-family: MyCustomFont;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=hIEfix.png,sizingMethod=crop);zoom:1;
+}
+
+
