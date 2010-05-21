@@ -4,7 +4,8 @@ $title = "Gallery";
 include("header.php");
 
 
-$db = new PDO('mysql:dbname=maelfroth', 'lampstand', 'glados');
+$conf = parse_ini_file("../dbconfig.ini");
+$db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['password']);
 
 ?>
 
