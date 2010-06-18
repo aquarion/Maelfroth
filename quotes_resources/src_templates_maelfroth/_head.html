@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="shortcut icon" type="image/x-icon"
+	href="<TMPL_VAR NAME="RESOURCES_URL">/cite.ico" />
+	<link rel="stylesheet" type="text/css"
+	href="<TMPL_VAR NAME="RESOURCES_URL">/css/default.css"/>
+
+	
+	<link rel="stylesheet" type="text/css" 	href="/style.css"/>
+
+	<TMPL_LOOP NAME="FEEDS">
+	<link rel="alternate" type="<TMPL_VAR NAME="FEED_MIME_TYPE">"
+	title="<TMPL_VAR NAME="FEED_TITLE">" href="<TMPL_VAR NAME="FEED_URL">" />
+	</TMPL_LOOP>
+	<TMPL_LOOP NAME="MICROSUMMARIES">
+	<link rel="microsummary" href="<TMPL_VAR NAME="MICROSUMMARY_URL">" type="text/plain" />
+	</TMPL_LOOP>
+	<TMPL_IF NAME="START_URL"><link rel="start" href="<TMPL_VAR NAME="START_URL">" /></TMPL_IF>
+	<TMPL_IF NAME="PREVIOUS_URL"><link rel="prev" href="<TMPL_VAR NAME="PREVIOUS_URL">" /></TMPL_IF>
+	<TMPL_IF NAME="NEXT_URL"><link rel="next" href="<TMPL_VAR NAME="NEXT_URL">" /></TMPL_IF>
+	<script type="text/javascript">var cookieDomain  = "<TMPL_VAR NAME="COOKIE_DOMAIN">", cookiePath = "<TMPL_VAR NAME="COOKIE_PATH">";</script>
+	<script type="text/javascript" src="<TMPL_VAR NAME="RESOURCES_URL">/js/style_switcher.js"></script>
+	<title><TMPL_VAR NAME="SITE_TITLE">: <TMPL_VAR NAME="PAGE_TITLE"></title>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-68374-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</head>
+<body>
+
+<div class="bannersurround">
+<div id="banner">
+	<ul class="breadcrumbs">
+	<li class="first">Quotes:</li>
+	<li><a
+	href="<TMPL_VAR NAME="QUOTE_BROWSER_URL">" title="<TMPL_VAR NAME="QUOTE_BROWSER_DESCRIPTION">">Recent</a></li><li><a
+	href="<TMPL_VAR NAME="RANDOM_QUOTES_URL">" title="<TMPL_VAR NAME="RANDOM_QUOTES_DESCRIPTION">"><TMPL_VAR NAME="RANDOM_QUOTES_SHORT_TITLE"></a></li><li><a
+	href="<TMPL_VAR NAME="TOP_QUOTES_URL">" title="<TMPL_VAR NAME="TOP_QUOTES_DESCRIPTION">"><TMPL_VAR NAME="TOP_QUOTES_SHORT_TITLE"></a></li>
+	
+	<!-- <li><a
+	href="<TMPL_VAR NAME="BOTTOM_QUOTES_URL">" title="<TMPL_VAR NAME="BOTTOM_QUOTES_DESCRIPTION">"><TMPL_VAR NAME="BOTTOM_QUOTES_SHORT_TITLE"></a></li> -->
+	
+	<li><a
+	href="<TMPL_VAR NAME="QUOTE_SEARCH_URL">" title="<TMPL_VAR NAME="QUOTE_SEARCH_DESCRIPTION">"><TMPL_VAR NAME="QUOTE_SEARCH_SHORT_TITLE"></a></li><TMPL_IF NAME="MODERATION_QUEUE_PUBLIC"><li><a
+	href="<TMPL_VAR NAME="MODERATION_QUEUE_URL">" title="<TMPL_VAR NAME="MODERATION_QUEUE_DESCRIPTION">"><TMPL_VAR NAME="MODERATION_QUEUE_SHORT_TITLE"></a></li></TMPL_IF><li><a
+	href="<TMPL_VAR NAME="TAG_CLOUD_URL">" title="<TMPL_VAR NAME="TAG_CLOUD_DESCRIPTION">"><TMPL_VAR NAME="TAG_CLOUD_SHORT_TITLE"></a></li><li><a
+	href="<TMPL_VAR NAME="STATISTICS_URL">" title="<TMPL_VAR NAME="STATISTICS_DESCRIPTION">"><TMPL_VAR NAME="STATISTICS_SHORT_TITLE"></a></li><li><a
+	href="<TMPL_VAR NAME="SUBMIT_QUOTE_URL">" title="<TMPL_VAR NAME="SUBMIT_QUOTE_DESCRIPTION">"><TMPL_VAR NAME="SUBMIT_QUOTE_SHORT_TITLE"></a></li><TMPL_IF NAME="LOGGED_IN"><li><a
+	href="<TMPL_VAR NAME="ADMINISTRATION_URL">" title="<TMPL_VAR NAME="ADMINISTRATION_DESCRIPTION">"><TMPL_VAR NAME="ADMINISTRATION_SHORT_TITLE"></a></li><li><a
+	href="<TMPL_VAR NAME="LOGOUT_URL">" title="<TMPL_VAR NAME="LOGOUT_DESCRIPTION">"><TMPL_VAR NAME="LOGOUT_SHORT_TITLE"></a></li><TMPL_ELSE><li><a
+	href="<TMPL_VAR NAME="LOGIN_URL">" title="<TMPL_VAR NAME="LOGIN_DESCRIPTION">"><TMPL_VAR NAME="LOGIN_SHORT_TITLE"></a></li></TMPL_IF>
+	
+	
+
+	</ul>
+
+</div>
+</div>
+
+<ul id="navigation">
+	
+	<li><a href="/" title="Gallery" class="section">Gallery</a></li>
+        <li><a class="section" href="http://www.maelfroth.org/events.php" title="Events">Events</a></li>
+	<li>	<a class="section" href="<TMPL_VAR NAME="START_PAGE_URL">" title="<TMPL_VAR NAME="START_PAGE_DESCRIPTION">">Quotes</a></li>
+	
+	<li><a class="section" href="/links.php" title="Links">Links</a></li>
+	<li><a class="section" href="http://wiki.maelfroth.org" title="Wiki">Wiki</a></li>
+
+	<li><a class="section" href="/lampstand.php" title="Lampstand">Lampstand</a></li>
+	<li><a class="section" href="/cgiirc/" title="Join the Channel">Join In</a></li>
+	
+	</ul>
+<div id="content">
