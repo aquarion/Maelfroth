@@ -1,0 +1,35 @@
+; $Id: aqwiki.ini.orig,v 1.4 2004/08/29 17:25:08 aquarion Exp $
+; AqWiki config
+; 
+
+db = "mysql://username:password@host/databaseName"
+
+;base = ""
+; Base contains that path relative to the site root that aqWiki runs in,
+; so if the URL of your wiki is "http://hol.istic.net/wiki/" the content
+; of this is "/wiki". If aqWiki is in the root, this is blank (default)
+
+base = ""
+
+;host = apache server host
+; The hostname of the current server, used for links meant to be 
+; used from the Big Wide World (like the RSS feed)
+; If you're using SSL you *MUST* set this, since by default 
+; I assume you're running http, rather than https
+; host = "http://host.name"
+
+debug = true
+
+;oneWiki. Setting this will restrict aqWiki to only ever having one wiki, which you access with the default url.
+; for example, where normally you would have http://host.name/aqwiki_path/wiki_name/article you would now just
+; have http://host.name/aqwiki_path/article which would get you "article" from whichever wiki you define below.
+
+;
+;oneWiki = holistic
+
+;By default aqWiki allows anyone to create a new wiki by just changing the wiki ID in the URL. Turn this to false
+; to stop this from happening.
+; TODO: make only certian users be able to do add new wikis.
+
+newwikis = true
+;newwikis = true

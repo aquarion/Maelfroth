@@ -1,0 +1,2 @@
+
+[[MACRO|events|userpage]]
