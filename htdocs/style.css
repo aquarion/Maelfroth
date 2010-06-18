@@ -1,4 +1,15 @@
 
+#content, .bannersurround, #navigation {
+max-width: 1224px;
+margin: 0 auto 0 auto;
+display: block;
+}
+
+
+#content p {
+	padding-left: 1em;
+}
+
 .inlineRight {
 	float: right;
 }
@@ -120,16 +131,11 @@ p.intro {
 
 
 ul#navigation {
-
-
-	-moz-border-radius: 0 0 1em 1em;
-	border-radius: 0 0 1em 1em;
-	margin: 0 117px 3em 0;
-	padding: 0.2em 0;
+	padding: 0;
 	list-style-type: none;
 	font-size: 90%;
-	text-align: right;
 	white-space: nowrap;
+	display: block;
 }
 
 ul#navigation li {
@@ -145,6 +151,8 @@ ul#navigation li a, ul#navigation li a:visited {
 	filter:alpha(opacity=35);
 	opacity: 0.35;
 	-moz-opacity:0.35;
+
+	border: 1px solid #EEE;
 
 	-moz-border-radius: 0 0 1em 1em;
 	border-radius: 0 0 1em 1em;
@@ -170,14 +178,7 @@ ul#navigarion li a.section, ul#navigation li a.section:visited {
 
 
 #content {
-	padding-left: 2em;
 	padding-top: 2em;
-}
-
- ul#navigation {
-	position: absolute;
-	top: 115px;
-	left: 0;
 }
 
 #navigation li {
