@@ -113,7 +113,7 @@ Event.observe(window, 'load', function() {
 </div>
 </div>
 <div class="boxed" id="userinfo"><img src="http://imperial.istic.net/static/icons/silk/user_gray.png" class="icon" title="Information"/> You Are: [[USER]] (identified by [[AUTH]]) 
-[[IfLoggedIn|<a href=\"[[URL]]?action=edit\"><img src="http://imperial.istic.net/static/icons/silk/note_edit.png" class="icon" title="Edit This Page"/></a>|<a href="[[URL]]?action=relogin"><img src="http://imperial.istic.net/static/icons/silk/user_go.png" class="icon" title="Login"/>Login</a> (<a href="[[URL]]?action=newUser"><img src="http://imperial.istic.net/static/icons/silk/user_add.png" class="icon" title="New User"/>New User</a>) ]]</div>
+[[IfLoggedIn|<a href="[[URL]]?action=edit"><img src="http://imperial.istic.net/static/icons/silk/note_edit.png" class="icon" title="Edit This Page"/></a>|<a href="[[URL]]?action=relogin"><img src="http://imperial.istic.net/static/icons/silk/user_go.png" class="icon" title="Login"/>Login</a> (<a href="[[URL]]?action=newUser"><img src="http://imperial.istic.net/static/icons/silk/user_add.png" class="icon" title="New User"/>New User</a>) ]]</div>
 <form class="boxed"  id="search" method="get" action="[[BASE]]/search">
 <img src="http://imperial.istic.net/static/icons/silk/find.png" class="icon" title="Search"/> <input type="text" name="q"> <input type="submit" value="search"></body>
 </html>
