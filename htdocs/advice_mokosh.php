@@ -1,15 +1,67 @@
 <?php
 
-if(!isset($_GET['top'])){
-echo <<< EOW
+
+$title = "Advice Mokosh";
+
+$defaultTop = isset($_GET['top']) ? $_GET['top'] : "Kill Wemics";
+$defaultBottom = isset($_GET['bottom']) ? $_GET['bottom'] : "Make Sausages";
+#$defaultSize = isset($_GET['size']) ? $_GET['size'] : "30";
+$defaultSizeTop = isset($_GET['sizetop']) ? $_GET['sizetop'] : "30";
+$defaultSizeBottom = isset($_GET['sizebottom']) ? $_GET['sizebottom'] : "30";
+
+$form = <<< EOW
+
+<div id="content">
+
+<p>[ <a href="http://www.maelfroth.org/mokosh_gallery/">Gallery of previous Mokosh</a> ]</p> 
+
+<table>
+
 <form action="advice_mokosh.php" method="GET">
-Top <input name="top" value="kill wemics"/><br/>
-Bottom <input name="bottom" value="make sausages"><br/>
-Size <input name="size" value="30"/><br/>
-<input type="submit" value="It make advices"/>
+<input type="hidden" name="view" value="true"/>
+<tr>
+	<td></td><td>Text</td><td>Font size</td>
+</tr>
+<tr>
+	<th>Top    </th>
+	<td> <input name="top" value="$defaultTop"/></td>
+	<td><input name="sizetop" value="$defaultSizeTop" /></td>
+</tr>
+<tr>
+	<th>Bottom </th>
+	<td> <input name="bottom" value="$defaultBottom"></td>
+	<td><input name="sizebottom" value="$defaultSizeBottom" /></td>
+</tr>
+<tr><td colspan="2"><input type="submit" value="It make advices"/></td></tr>
 </form>
+
+</table>
+
 EOW;
-die();
+
+if(isset($_GET['view'])) {
+	include("header.php");
+	echo $form;
+	$query = $_GET;
+	unset($query['view']);
+	$url = "http://www.maelfroth.org/advice_mokosh.php?".http_build_query($query);
+
+	$html = sprintf('<img src="%s" />', $url);
+
+	echo "<p>$html</p>";
+
+
+	printf("HTML Code: <blockquote><pre>%s</pre></blockquote>", htmlentities($html));
+	printf("IFCode (For use on Rule7): <blockquote><pre>[img]%s[/img]</pre></blockquote>", htmlentities($url));
+	
+	echo "</div></body></html>";
+	die();
+	
+} elseif(!isset($_GET['top'])){
+	include("header.php");
+	echo $form;
+	echo "</div></body></html>";
+	die();
 }
 
 $top = stripslashes($_GET['top']); 
