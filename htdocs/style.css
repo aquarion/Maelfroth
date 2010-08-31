@@ -225,10 +225,22 @@ a.gallerylink {
  src: url("font/renaissance.ttf") /* TTF file for CSS2 browsers */
 }
 
-.scripted {
+.scripted, h1, h2, h3, h4 {
 	font-weight: normal;
         font-family: MyCustomFont;
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=hIEfix.png,sizingMethod=crop);zoom:1;
 }
 
+h1 { font-size: 42pt; }
+h2 { font-size: 32pt; }
 
+dl {
+	padding-left: 1em;
+}
+dt {
+	font-weight: bold;
+}
+
+dd {
+	padding-bottom: .5em;
+}
