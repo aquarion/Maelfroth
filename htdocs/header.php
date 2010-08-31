@@ -37,7 +37,7 @@ pageTracker._trackPageview();
 	<li><a class="section" href="/links.php" title="Links">Links</a></li>
         <li><a class="section" href="http://wiki.maelfroth.org" title="Wiki">Wiki</a></li>
         <li><a class="section" href="/lampstand.php" title="Lampstand">Lampstand</a></li>
-        <li><a class="section" href="/cgiirc/" title="Join the Channel">Join In</a></li>
+        <li><a class="section" href="/joinin.php" title="Join the Channel">Join In</a></li>
 </ul>
 
 EOW;
