@@ -170,7 +170,7 @@ if (headers_sent()){
 
     $newimage = $final;
 
-    imagestring($final, 1, 0, 0, "Regen");
+    #imagestring($final, 1, 0, 0, "Regen");
 
     imagejpeg($final, null, $comp);
 
