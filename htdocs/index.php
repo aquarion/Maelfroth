@@ -54,6 +54,9 @@ define("DAYS", 60*60*24);
 
 $longlost = array();
 
+echo "<h1>Operators</h1>";
+$saidop = false;
+
 foreach($people as $person){
 	if($person[0] == '#' || empty($person)){
 		continue;
@@ -66,7 +69,12 @@ foreach($people as $person){
 	$person[7] = strtr($person[7], "_-", "  ");	
 	
 	#                 1 - IRC   , 2 - Character, 3 - Title , 4 - Physrep, 5 - Image 
-	
+
+	if($person[0][0] != "@" && !$saidop){
+		echo "<h1 style=\"clear: both; padding-top: 1em;\">Frothians</h1>";
+		$saidop = true;
+	}	
+
 	$q = "select * from lastseen where username = \"%s\" or username LIKE \"%s\" order by last_seen desc limit 1";
 	
 	$sql = sprintf($q, $image,$image."|%");
