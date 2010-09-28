@@ -47,7 +47,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 	}
 	$time = date("H:i", $row['time']);
 	$user = $row['username'];
-	$message = nl2br(ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $row['message']));
+	$message = nl2br(ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\" rel=\"nofollow\">\\0</a>", $row['message']));
 	printf($tr, $time, $user, $message);
 }
 
