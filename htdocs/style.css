@@ -101,7 +101,7 @@ div.contactcard a {
 
 
 div.contactcard dl{
-	padding-top: 50px;
+	padding-top: 20px;
 	padding-left: 150px;
 	display: block;
 }
@@ -114,6 +114,27 @@ div.contactcard .words {
 div.contactcard dd {
 	text-align: right;
 	margin-left: 10px;
+}
+
+div.contactcard dd.photocredit {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	background: url("http://imperial.istic.net/static/icons/silk/camera.png") no-repeat center left;
+	padding-left: 20px;
+	line-height: 20px;
+	padding-top: 4px;
+	color: #888;
+	font-size: smaller;
+}
+
+div.contactcard dd.photocredit a {
+	color: #888;
+}
+
+
+div.contactcard dt.photocredit {
+	display: none;
 }
 
 #banner {
