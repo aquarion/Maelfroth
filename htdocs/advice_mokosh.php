@@ -8,6 +8,27 @@ $defaultBottom = isset($_GET['bottom']) ? $_GET['bottom'] : "Make Sausages";
 #$defaultSize = isset($_GET['size']) ? $_GET['size'] : "30";
 $defaultSizeTop = isset($_GET['sizetop']) ? $_GET['sizetop'] : "30";
 $defaultSizeBottom = isset($_GET['sizebottom']) ? $_GET['sizebottom'] : "30";
+$defaultTemplate = isset($_GET['template']) ? $_GET['template'] : "mokosh";
+
+
+$templates = array(
+	'mokosh' => array("file" => "images/Advicemokosh_template.jpg", "name" => "Advice Mokosh", "topline" => 55, "bottomline" => "245"),
+	'imam'   => array("file" => "images/adviceimam_template.jpg", "name" => "Advice Imam"    , "topline" => 50, "bottomline" => "285", "invert" => true),
+	'teacher'   => array("file" => "images/adviceteacher_template.jpg", "name" => "Advice Teacher"    , "topline" => 50, "bottomline" => "285")
+);
+
+$select = '<select name="template">';
+foreach($templates as $template => $detail){
+
+	if ($template == $defaultTemplate){
+		$selected = ' selected="SELECTED"';
+	} else {
+		$selected = '';
+	}
+
+	$select .= '<option value="'.$template.'"'.$selected.'>'.$detail['name'].'</option>';
+}
+$select .= '</select>';
 
 $form = <<< EOW
 
@@ -31,6 +52,12 @@ $form = <<< EOW
 	<th>Bottom </th>
 	<td> <input name="bottom" value="$defaultBottom"></td>
 	<td><input name="sizebottom" value="$defaultSizeBottom" /></td>
+</tr>
+<tr>
+	<th>Picture</th>
+	<td colspan="2">
+		$select
+	</td>
 </tr>
 <tr><td colspan="2"><input type="submit" value="It make advices"/></td></tr>
 </form>
@@ -71,7 +98,15 @@ $size = $sizey = (isset($_GET['size']) ? $_GET['size'] : 30);
 $sizetop = (isset($_GET['sizetop']) ? $_GET['sizetop'] : $size);
 $sizebottom = (isset($_GET['sizebottom']) ? $_GET['sizebottom'] : $size);
 
-$imagefile = 'images/Advicemokosh_template.jpg';
+$template = (isset($_GET['template']) ? $_GET['template'] : "mokosh");
+
+
+if(!isset($templates[$template])){
+	die("What?");
+}
+$template = $templates[$template];
+
+$imagefile = $template['file'];
 
 $font = 'font/impact.ttf';
 
@@ -129,20 +164,33 @@ $card_width = imagesx ($image);
 $card_height = imagesy ($image);
 
 $white = imagecolorallocate($image, 255, 255, 255);
+$black = imagecolorallocate($image, 0, 0, 0);
 
 $topbox = imagettfbbox  ($sizetop , 0 , $font , $top );
 $topwidth = $topbox[0]+$topbox[2];
 $topx = ($card_width - $topwidth)/2;
 
-$baseline = (($card_height/3) + ($topbox[1]+$topbox[7]));
+#$baseline = (($card_height/3) + ($topbox[1]+$topbox[7]));
+
 
 $bottombox = imagettfbbox  ($sizebottom , 0 , $font , $bottom );
 $bottomwidth = $bottombox[0]+$bottombox[2];
 $bottomx = ($card_width - $bottomwidth)/2;
 
-imagettftextoutline ($image, $sizetop , 0, $topx , $baseline , $white , $black ,$font ,$top, 2 );
-imagettftextoutline ($image, $sizebottom , 0, $bottomx , 255 , $white , $black ,$font ,$bottom, 2 );
+$topline    = $template['topline']; #55;
+$bottomline = $template['bottomline']; #245;
 
+$outline = 2;
+
+if (isset($template['invert'])){
+	$y = $black;
+	$black = $white;
+	$white = $y;
+	$outline = 0;
+}
+
+imagettftextoutline ($image, $sizetop    , 0, $topx    , $topline    , $white , $black ,$font ,$top   , $outline );
+imagettftextoutline ($image, $sizebottom , 0, $bottomx , $bottomline , $white , $black ,$font ,$bottom, $outline );
 
 #
 #imagettftext($image, $size, 0, $topx,      $baseline, $white, $font, $top);
