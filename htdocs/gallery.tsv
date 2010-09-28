@@ -10,7 +10,7 @@
 #Veritas	Veritas	Caffinated Eidolon of the Smith	Andy
 #Zeke	Horn	Things to make you better	Zeke
 #circe	Lady Giselle Lamberte	Pride. That woman is an insult to pride	Cheryl
-@Aquarion	Detail Marshall	Wafting Weaverite	Aquarion
+@Aquarion	Detail Marshall	Wafting Weaverite	Aquarion	Arachne
 @Delvy	Sergeant Jacob Donskoi	Paladin of the White Lion	Matt 
 @Salbot	Calpurnia Vorenus Cicero		Sal
 #@Scar	Daisuke <q>Scar</q> Kimi	One very <strike>twitchy</strike> redead badger	Jenny
@@ -53,7 +53,8 @@ Gerwyn	Wynne the Younger		Gerwyn
 GodGirl_Oneris	Oneris		Cheryl
 Gracewing	Rachida Kainda		Carrie
 Helly	Whisper		Helly
-Ias	<abbr title="Regimental Sergeant Major">RSM</abbr> Mdjai	Does not play well with others	Iasus
+#Ias	<abbr title="Regimental Sergeant Major">RSM</abbr> Mdjai	Does not play well with others	Iasus
+Ias	Tom Steele	Battle Butler	Iasus	Dan Osbaldeston
 Illithidbix	Khaniel	Purple People Eater	Tom
 Ima	Ima		Laura
 Iris	Lady Iris Debrynn		Jessi
@@ -66,14 +67,14 @@ One_Wing	Ramesen Astares	Fuzzy Mayan	James
 Orev	Aziraphel	Tick.....tick.....tick.....	Orev
 Oxfordgirl	Lydiena "Kass" Kasadyenka	Regimental Mascot	Helen
 Path	Path		Danny Light
-Penny	Filia Risi Balatro		Penny
+Penny	Filia Risi	The Lyzanium revolution	Penny	Dan Osbaldeston
 Pufferfish	Fiona Marshall	Things & People Sewn	Rosemary Warner
 Rachel27	Elizabeth		Rachel
 Rakdos	Ragnar	of the Spine of the World	Luke
 Rheinfelden	Rheinfelden	Orange is the new black	Russ
 SigmundB	Sigmund Bardisson	Armourer, Scholar, Teacher	Dan
 Switch	Switch		Mike
-Tac	Tac		Ric
+#Tac	Tac		Ric
 Tori	Kara		Tori
 Tryst	Tamworth		Rob Barnes
 Veritas	Veritas	Nosing around in other peoples business since 6340 BCE	Andy
@@ -86,7 +87,7 @@ blackcurrants	The Late Ansellina Sanseverain	Ribbons. Guns. The Lover.	Marina
 cmb	Sergei Goldsmith	Armourer, croupier, tea boy	Chris Boyle
 darktachyon	Henrik Beaufort	Knowledge breeds paranoia	Alex Shires
 doug	Dieter Landau	Broken Gunbunny	Doug
-hikari	Stepan		hikari
+hikari	Stepan		hikari	arachne
 Louis	Baron Louis VonRichter		Richard
 me_and	Alfas	Holier than thou	Adam D
 medabeaks	Lilith Sartia		Rebecca Willatts
@@ -100,10 +101,10 @@ Vevaphonics	Raoul Fremont	Walking Diplomatic Incident	Doug K
 TheKremlin	Edward Hanfling	"Fire and Faith"	Jake
 Tallia	Tallia	(Chief Whore)	Steph
 #Clouds	Captain Ellen Bonney	...Or I could just shoot you.	Clouds
-Clouds	Inquisitor Xiquob	The Great Facet Detective	Clouds
+Clouds	Inquisitor Xiquob	The Great Facet Detective	Clouds	Xarra
 Rattigan	Rattigan O'Leary	A friend made is an enemy unmade	Jonathan Harding
 JagJinx	Jagesian Jinx	"Jag"	Mike F
-dwm	Ulrich Stein	"Man in Tights"	David
+dwm	Ulrich Stein	"Man in Tights"	David	Xarra
 fyrheafoc	Amelia Marshall	Property of...	fyrheafoc
 ley	Rak'shi	Serpent, Earthquake, Peacock - What!?	Leigh
 leeoconnor	Nicolas Justel	Getting it all down on paper	Lee
@@ -124,3 +125,5 @@ Kiwi	Amenhet ibn-Bakri Malaaj		Luke or Kiwi
 Sparks	Piotr Podaniakov		Sparks
 Davoul	Imam-Aghora Parnassus Rakses	BUILDER BLESS	David
 Carsenere	Tulak Hord	Corporal Pinapple	Carsenere
+Vermillion	Redd		Richard	Xarra
+Allaren	Allaren	Eidolon Hugs	Ric	Xarra
