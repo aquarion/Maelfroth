@@ -1,7 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html> 
+ <head> 
+ <title> [Maelfroth] Gallery </title> 
+ 
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+var pageTracker = _gat._getTracker("UA-68374-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script> 
+ 
+<style style="text/css"> 
+        @import url('/style.css');
+</style> 
+</head>
+<body>
 <?PHP
-
-$title = "Gallery";
-include("header.php");
 
 
 $conf = parse_ini_file("../dbconfig.ini");
@@ -11,14 +28,12 @@ $db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['passw
 
 <div id="content">
 
-<p class="intro">Being a concise and possibly even accurate collection of residents of the world beyond the Maelfroth. For inclusion, supply a name, physrep identifier, character and associated graphical representation by metamagical transfer to the address "<B>gallery</B>" care of the <B>Maelfroth</B> <B>org</B>anisation. This is also the place to send replacement photos and suggestions for taglines for characters (Not physreps). Taglines are approved and modified based on what the archivist finds most amusing. He has a twisted sense of humour. Comments and objections to the address above.
-<p>
-
 <?PHP
 
 if(!$file = file_get_contents('gallery.tsv')){
 	die("Can't open data file");
 }
+
 
 
 include("photographers.php"); # Array of photography credits
@@ -31,14 +46,17 @@ define("DAYS", 60*60*24);
 
 $longlost = array();
 
-echo "<h1>Operators</h1>";
-$saidop = false;
-
 foreach($people as $person){
+
+
 	if($person[0] == '#' || empty($person)){
 		continue;
 	} 
 	$data = explode("\t", $person);
+	
+	if (strtolower($data[0]) != strtolower($_SERVER['QUERY_STRING'])){
+		continue;
+	}
 
 	$displayname = preg_replace('/\W/', '', strtr($data[0], "_-", "  "));	
 	$filename    = strtolower(preg_replace('/\W/', '', $data[0]));
@@ -49,10 +67,6 @@ foreach($people as $person){
 	$physrep     = $data[3];
 	$photocredit = $data[4];
 	
-	if($username[0] != "@" && !$saidop){
-		echo "<h1 style=\"clear: both; padding-top: 1em;\">Frothians</h1>";
-		$saidop = true;
-	}
 
 	/// Populate LastSeen:
 
@@ -71,7 +85,7 @@ foreach($people as $person){
 	
 	$delta = time() - $lastseen;
 	if ($delta < 7*DAYS){
-		$tfmt ='l \a\t H:i';
+		$tfmt ='D \a\t H:i';
 	} elseif ($delta < 30*DAYS){
 		$tfmt = 'j\<\s\u\p\>S\<\/\s\u\p\> M \a\t H:i';
 	} else {
@@ -92,9 +106,9 @@ foreach($people as $person){
 		$photocredit = sprintf('<a href="%1$s" title="Photo taken by %2$s">%2$s</a>', $photographers[$photocredit]['url'], $photographers[$photocredit]['name']);
 	}
 
-	$card =  '
+	echo '
 <div class="contactcard" style="background-image: url(\'nameback.php?name='.$username.'\'); position: relative;">
-	<a href="/gallery/'.$filename.'.jpg" class="gallerylink">&nbsp;</a>
+	<a href="/gallery/'.$thumbnail.'.jpg" class="gallerylink">&nbsp;</a>
 	<h2 class="scripted">'.$displayname.'</h2>
 	<dl>
 		<dt>Character</dt>
@@ -109,48 +123,15 @@ foreach($people as $person){
 		<dt>Last Seen</dt>
 		<dd>'.$lastseen.'</dd>
 
-		';
-if($photocredit){
-	$card .= '<dt class="photocredit">Photo Credit</dt>
-		<dd class="photocredit">'.$photocredit.'</dd>';
-}
+		<dt class="photocredit">Photo Credit</dt>
+		<dd class="photocredit">'.$photocredit.'</dd>
 
-$card .='	</dl>
+	</dl>
 </div>';
 
-	if($delta > 60*60*24*30*6){ // Six months
-		$longlost[] = $card;
-	} else {
-		echo $card;
-	}
-
 
 }
 
-?>
-
-<!--
--->
-
-
-<div class="contactcard" style="background-image: url('nameback.php?name=Your%20Photo%20Here');">
-
-<div class="words">
-	<p>(If it's after Zeke in the alphabet, which seems unlikely)</p>
-
-	<p>To appear in this gallery: (a) Be on #maelfroth, (b) Send a photo and details to gallery@maelfroth.org</p>
-</div>
-</div>
-
-<hr style="clear: both;">
-
-<h1>Folks we haven't seen in a while:</h1>
-
-<?PHP
-
-foreach($longlost as $card){
-	echo $card;
-}
 ?>
 
 </div>
