@@ -4,6 +4,16 @@ $title = "Events";
 include("header.php");
 
 $datecache = '';
+$filterquery = "";
+if(isset($_GET['filter'])){
+	$filter = explode("|",$_GET['filter']);
+	foreach ($filter as $index => $value){
+		$filter[$index] = addslashes($value);
+	}
+
+	$filterquery = " AND class in (\"". implode($filter, '", "')."\")";
+}
+
 ?>
 
 
@@ -22,7 +32,7 @@ $datecache = '';
 $conf = parse_ini_file("../dbconfig.ini");
 $db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['password']);
 
-$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime > now() order by datetime";
+$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime > now() $filterquery order by datetime";
 
 $result = $db->query($query);
 if(!$result){
@@ -34,8 +44,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 #-----------------------------
 ?><h1>The Past</h1><?PHP
 
-$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime < now() order by class, datetime";
-
+$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime < now() $filterquery order by datetime";
 $result = $db->query($query);
 
 

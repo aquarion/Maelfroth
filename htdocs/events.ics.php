@@ -1,5 +1,18 @@
 <?PHP
+
+$filterquery = "";
+if(isset($_GET['filter'])){
+	$filter = explode("|",$_GET['filter']);
+	foreach ($filter as $index => $value){
+		$filter[$index] = addslashes($value);
+	}
+
+	$filterquery = " AND class in (\"". implode($filter, '", "')."\")";
+}
+
+
 	header("Content-Type: text/calendar");
+	#header("Content-Type: text/plain");
 $header = 'BEGIN:VCALENDAR
 PRODID:-//Aquarion//Lampstand 1.1//EN
 VERSION:2.0
@@ -33,7 +46,9 @@ echo $header;
 $conf = parse_ini_file("../dbconfig.ini");
 $db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['password']);
 
-$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime > now() order by datetime";
+$date = date("Y-m-d", time() - (60*60*24*365) );
+
+$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime > $date $filterquery order by datetime";
 
 
 $result = $db->query($query);
