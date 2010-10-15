@@ -231,7 +231,7 @@ a.gallerylink {
         font-size: 40pt; position: absolute; top: 0; left: 0;
         padding: 0;
         margin: 0;
-        line-height: 50px;
+        line-height: 1.5em;
 	width: 100%;
 	text-shadow: 2px 2px 2px #000;
 }
@@ -252,8 +252,8 @@ a.gallerylink {
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=hIEfix.png,sizingMethod=crop);zoom:1;
 }
 
-h1 { font-size: 42pt; }
-h2 { font-size: 32pt; }
+h1 { font-size: 42pt; line-height: .9em}
+h2 { font-size: 32pt; line-height: .9em}
 
 dl {
 	padding-left: 1em;
