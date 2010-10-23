@@ -12,7 +12,6 @@ if(isset($_GET['filter'])){
 
 
 	header("Content-Type: text/calendar");
-	#header("Content-Type: text/plain");
 $header = 'BEGIN:VCALENDAR
 PRODID:-//Aquarion//Lampstand 1.1//EN
 VERSION:2.0
@@ -48,7 +47,7 @@ $db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['passw
 
 $date = date("Y-m-d", time() - (60*60*24*365) );
 
-$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime > $date $filterquery order by datetime";
+$query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime > '$date' $filterquery order by datetime";
 
 
 $result = $db->query($query);
