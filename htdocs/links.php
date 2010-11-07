@@ -32,6 +32,11 @@ if (isset($_GET['month']) && isset($_GET['year'])){
 	$query = "select * from urllist order by time desc limit 60";
 }
 
+if (isset($_GET['user'])){
+	$query = "select * from urllist where username = \"".addslashes($_GET['user'])."\"order by time desc";
+}
+
+
 $result = $db->query($query);
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
