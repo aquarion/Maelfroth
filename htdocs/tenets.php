@@ -32,7 +32,7 @@ $tenets = array();
 
 
 function ordinal($one,$two){
-	$order = array("first","second","third","forth","fifth","sixth","seventh","eighth","ninth","tenth");
+	$order = array("first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth");
 
 	#echo "compare $one to $two";
 
