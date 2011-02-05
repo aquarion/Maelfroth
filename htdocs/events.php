@@ -39,7 +39,11 @@ if(!$result){
 	print_r($db->errorInfo());
 }
 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-	echo "<li><strong>{$row['class']}</strong>: <i>{$row['description']}</i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
+	if(empty($row['url'])){
+		echo "<li><strong>{$row['class']}</strong>: <i>{$row['description']}</i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
+	} else {
+		echo "<li><strong>{$row['class']}</strong>: <a href=\"{$row['url']}\"><i>{$row['description']}</a></i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
+	}
 }
 #-----------------------------
 ?><h1>The Past</h1><?PHP
@@ -53,7 +57,12 @@ if(!$result){
 }
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-	echo "<li><strong>{$row['class']}</strong>: <i>{$row['description']}</i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
+
+	if(empty($row['url'])){
+		echo "<li><strong>{$row['class']}</strong>: <i>{$row['description']}</i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
+	} else {
+		echo "<li><strong>{$row['class']}</strong>: <a href=\"{$row['url']}\"><i>{$row['description']}</a></i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
+	}
 }
 ?>
 </div>
