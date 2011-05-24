@@ -40,7 +40,7 @@ foreach($people as $person){
 	} 
 	$data = explode("\t", $person);
 
-	$displayname = preg_replace('/\W/', '', strtr($data[0], "_-", "  "));	
+	$displayname = preg_replace('/\W/', ' ', strtr($data[0], "_-", "  "));	
 	$filename    = strtolower(preg_replace('/\W/', '', $data[0]));
 
 	$username    = $data[0];
