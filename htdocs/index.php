@@ -47,8 +47,12 @@ foreach($people as $person){
 	$character   = $data[1];
 	$tagline     = $data[2];
 	$physrep     = $data[3];
+
+	if(isset($data[4])){
 	$photocredit = $data[4];
-	
+	} else {
+	$photocredit = false;
+	}
 	if($username[0] != "@" && !$saidop){
 		echo "<h1 style=\"clear: both; padding-top: 1em;\">Frothians</h1>";
 		$saidop = true;
