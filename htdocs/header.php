@@ -1,5 +1,9 @@
 <?PHP
 
+if(!isset($header)){
+	$header = '';
+}
+
 echo <<<EOW
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -20,6 +24,8 @@ pageTracker._trackPageview();
 <style style="text/css">
         @import url('/style.css');
 </style>
+
+$header
 
 </head>
 
