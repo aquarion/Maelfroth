@@ -1,5 +1,7 @@
 <?PHP
 
+header("location: http://wiki.maelfroth.org/lampstandDocs");
+
 $title = "Lampstand Manual";
 include("header.php");
 ?>
