@@ -97,9 +97,9 @@ foreach($people as $person){
 	}
 
 	$card =  '
-<div class="contactcard" style="background-image: url(\'nameback.php?name='.$username.'\'); position: relative;">
+<div class="contactcard" style="background-image: url(\'nameback.php?name='.$username.'\'); position: relative;" id="'.$username.'">
 	<a href="/gallery/'.$filename.'.jpg" class="gallerylink">&nbsp;</a>
-	<h2 class="scripted">'.$displayname.'</h2>
+	<h2 class="scripted"><a href="#'.$username.'">'.$displayname.'</a></h2>
 	<dl>
 		<dt>Character</dt>
 		<dd>'.$character.' <br/><i>'.$tagline.'</i></dd>

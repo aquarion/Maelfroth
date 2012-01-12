@@ -99,6 +99,13 @@ div.contactcard a {
 	color: white;
 }
 
+div .contactcard h2 a {
+	text-decoration: none;
+}
+div .contactcard h2 a:hover {
+	text-decoration: underline;
+}
+
 
 div.contactcard dl{
 	padding-top: 20px;
