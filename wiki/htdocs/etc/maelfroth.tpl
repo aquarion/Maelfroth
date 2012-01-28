@@ -25,8 +25,8 @@ pageTracker._trackPageview();
 <script type="text/javascript" src="http://imperial.istic.net/static/js/firebugx.js"></script>
 
 <script type="text/javascript">
-var expand   = '<img src="http://imperial.istic.net/static/icons/silk/book.png" class="icon" title="Show Revisions"/>';
-var collapse = '<img src="http://imperial.istic.net/static/icons/silk/book_open.png" class="icon" title="Hide Revisions"/>';
+var expand   = '<img src="http://art.istic.net/iconography/silk/book.png" class="icon" title="Show Revisions"/>';
+var collapse = '<img src="http://art.istic.net/iconography/silk/book_open.png" class="icon" title="Hide Revisions"/>';
 
 
 var AqWiki = {
@@ -78,7 +78,7 @@ Event.observe(window, 'load', function() {
 		<li><A HREF="/contents">Index</A></li>
 		<li><A HREF="/help">Help</A></li>
 		<li>
-			<form class="inline" method="get" action="/search"><input type="text" name="q" size="7" class="search"><button><img src="http://imperial.istic.net/static/icons/silk/magnifier.png"/></button></form>
+			<form class="inline" method="get" action="/search"><input type="text" name="q" size="7" class="search"><button><img src="http://art.istic.net/iconography/silk/magnifier.png"/></button></form>
 		</li>
 	</ul>
 </div>
@@ -102,7 +102,7 @@ Event.observe(window, 'load', function() {
 [[CONTENT]]
 <p><a href="[[URL]]?action=edit">Edit this page</a></p>
 
-<div class="boxed" id="pageinfo"><img src="http://imperial.istic.net/static/icons/silk/information.png" class="icon" title="Information"/> Revised by [[AUTHOR]] @ [[DATE]]</div>
+<div class="boxed" id="pageinfo"><img src="http://art.istic.net/iconography/silk/information.png" class="icon" title="Information"/> Revised by [[AUTHOR]] @ [[DATE]]</div>
 <div id="revisions" class="boxed">
 <h3 id="versionsTitle">[[VERSIONCOUNT]] Version[[PLURAL|[[VERSIONCOUNT]]]]</h3>
 
@@ -112,8 +112,8 @@ Event.observe(window, 'load', function() {
 
 </div>
 </div>
-<div class="boxed" id="userinfo"><img src="http://imperial.istic.net/static/icons/silk/user_gray.png" class="icon" title="Information"/> You Are: [[USER]] (identified by [[AUTH]]) 
-[[IfLoggedIn|<a href="[[URL]]?action=edit"><img src="http://imperial.istic.net/static/icons/silk/note_edit.png" class="icon" title="Edit This Page"/></a>|<a href="[[URL]]?action=relogin"><img src="http://imperial.istic.net/static/icons/silk/user_go.png" class="icon" title="Login"/>Login</a> (<a href="[[URL]]?action=newUser"><img src="http://imperial.istic.net/static/icons/silk/user_add.png" class="icon" title="New User"/>New User</a>) ]]</div>
+<div class="boxed" id="userinfo"><img src="http://art.istic.net/iconography/silk/user_gray.png" class="icon" title="Information"/> You Are: [[USER]] (identified by [[AUTH]]) 
+[[IfLoggedIn|<a href="[[URL]]?action=edit"><img src="http://art.istic.net/iconography/silk/note_edit.png" class="icon" title="Edit This Page"/></a>|<a href="[[URL]]?action=relogin"><img src="http://art.istic.net/iconography/silk/user_go.png" class="icon" title="Login"/>Login</a> (<a href="[[URL]]?action=newUser"><img src="http://art.istic.net/iconography/silk/user_add.png" class="icon" title="New User"/>New User</a>) ]]</div>
 <form class="boxed"  id="search" method="get" action="[[BASE]]/search">
-<img src="http://imperial.istic.net/static/icons/silk/find.png" class="icon" title="Search"/> <input type="text" name="q"> <input type="submit" value="search"></body>
+<img src="http://art.istic.net/iconography/silk/find.png" class="icon" title="Search"/> <input type="text" name="q"> <input type="submit" value="search"></body>
 </html>

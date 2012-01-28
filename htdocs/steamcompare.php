@@ -82,7 +82,7 @@ include("header.php");
 <form id="addform">
     <input id="addperson" type="text"/>
     <a href="#" id="addbutton">
-        <img src="http://imperial.istic.net/static/icons/silk/add.png">
+        <img src="http://art.istic.net/iconography/silk/add.png">
     </a>
 </form>
 
