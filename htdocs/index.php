@@ -3,6 +3,7 @@
 $title = "Gallery";
 include("header.php");
 
+define("A_MONTH", 60*60*24*30);
 
 $conf = parse_ini_file("../dbconfig.ini");
 $db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['password']);
@@ -30,6 +31,8 @@ natcasesort($people);
 define("DAYS", 60*60*24);
 
 $longlost = array();
+$edgeoftheworld = array();
+$lastshown = "";
 
 echo "<h1>Operators</h1>";
 $saidop = false;
@@ -122,10 +125,14 @@ if($photocredit){
 $card .='	</dl>
 </div>';
 
-	if($delta > 60*60*24*30*6){ // Six months
+
+	if($delta > A_MONTH * 12){
+		$edgeoftheworld[] = $displayname;
+	} elseif ($delta > A_MONTH * 6) { // Six months
 		$longlost[] = $card;
 	} else {
 		echo $card;
+		$lastshown = $displayname;
 	}
 
 
@@ -138,9 +145,10 @@ $card .='	</dl>
 
 
 <div class="contactcard" style="background-image: url('nameback.php?name=Your%20Photo%20Here');">
+	<h2 class="scripted">Your Photo Here</h2>
 
 <div class="words">
-	<p>(If it's after Zeke in the alphabet, which seems unlikely)</p>
+	<p>(If it's after <?PHP echo $lastshown?> in the alphabet, which seems unlikely)</p>
 
 	<p>To appear in this gallery: (a) Be on #maelfroth, (b) Send a photo and details to gallery@maelfroth.org</p>
 </div>
@@ -155,6 +163,15 @@ $card .='	</dl>
 foreach($longlost as $card){
 	echo $card;
 }
+?>
+
+<hr style="clear: both;">
+
+<h2>The Lost</h2>
+
+<?PHP 
+	$last = array_pop($edgeoftheworld);
+	echo implode(", ", $edgeoftheworld)." &amp; ".$last;
 ?>
 
 </div>
