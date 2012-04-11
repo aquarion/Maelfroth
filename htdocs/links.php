@@ -26,14 +26,14 @@ if (isset($_GET['month']) && isset($_GET['year'])){
 	$from = intval($_GET['year']).'-'.intval($_GET['month']).'-01T00:00';
 	$to = strtotime($from.' +1 Month');
 	$from = strtotime($from);
-	$query = "select * from urllist where time between ".$from." and  ".$to." order by time";	
+	$query = "select * from urllist where time between ".$from." and  ".$to." and channel = '#maelfroth' order by time";	
 
 } else {
-	$query = "select * from urllist order by time desc limit 60";
+	$query = "select * from urllist where channel = '#maelfroth' order by time desc limit 60";
 }
 
 if (isset($_GET['user'])){
-	$query = "select * from urllist where username = \"".addslashes($_GET['user'])."\"order by time desc";
+	$query = "select * from urllist where username = \"".addslashes($_GET['user'])."\" and channel = '#maelfroth' order by time desc";
 }
 
 
@@ -52,7 +52,13 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 	}
 	$time = date("H:i", $row['time']);
 	$user = $row['username'];
-	$message = nl2br(ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\" rel=\"nofollow\">\\0</a>", $row['message']));
+	if ($row['shorturl']){
+		$id = uniqid();
+		$message = nl2br(ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"$id\" rel=\"nofollow\">\\0</a>", $row['message']));
+		$message = str_replace($id, $row['shorturl'], $message);
+	} else {
+		$message = nl2br(ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\" rel=\"nofollow\">\\0</a>", $row['message']));
+	}
 	printf($tr, $time, $user, $message);
 }
 
