@@ -48,6 +48,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 #-----------------------------
 ?><h1>The Past</h1><?PHP
 
+$year = 0;
+
 $query = "select *, unix_timestamp(datetime) as datetime_epoch, unix_timestamp(datetime_end) as datetime_end_epoch from events where datetime < now() $filterquery order by datetime";
 $result = $db->query($query);
 
@@ -57,6 +59,12 @@ if(!$result){
 }
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+	$eventyear = date("Y", $row['datetime_epoch']);
+	if ($year !== $eventyear){
+		printf("<h2>%d</h2>", $eventyear);
+		$year = $eventyear;
+	}
 
 	if(empty($row['url'])){
 		echo "<li><strong>{$row['class']}</strong>: <i>{$row['description']}</i> - ".date('l d\<\s\u\p\>S\<\/\s\u\p\> F Y', $row['datetime_epoch'])." </li>";
