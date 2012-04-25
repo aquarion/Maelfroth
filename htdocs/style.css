@@ -67,7 +67,6 @@ body {
 }
 
 a {
-	font-weight: bold;
 	color: #4848d4;
 }
 
@@ -235,28 +234,21 @@ a.gallerylink {
 }
 
 .contactcard h2 {
-        font-size: 40pt; position: absolute; top: -27px; left: 0;
+        font-size: 40pt; position: absolute; top: -17px; right: 0;
         padding: 0;
         margin: 0;
         line-height: 1.5em;
 	width: 100%;
 	text-shadow: 2px 2px 2px #000;
+	text-align: right;
 }
 
-
-@font-face {
- font-family: MyCustomFont;
- src: url("font/renaissance.eot") /* EOT file for IE */
-}
-@font-face {
- font-family: MyCustomFont;
- src: url("font/renaissance.ttf") /* TTF file for CSS2 browsers */
-}
 
 .scripted, h1, h2, h3, h4 {
 	font-weight: normal;
-        font-family: MyCustomFont;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=hIEfix.png,sizingMethod=crop);zoom:1;
+        /*font-family: MyCustomFont;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=hIEfix.png,sizingMethod=crop);zoom:1; */
+	font-family: 'Italianno';
 }
 
 h1 { font-size: 42pt; line-height: .9em}
@@ -266,7 +258,7 @@ dl {
 	padding-left: 1em;
 }
 dt {
-	font-weight: bold;
+	font-weight: normal;
 }
 
 dd {
