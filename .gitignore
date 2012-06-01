@@ -1,7 +1,8 @@
 .DS_Store
 chirpy*
 dbconfig.ini
-htdocs/gallery
+#htdocs/gallery
+htdocs/gallery/thumbs
 htdocs/mokosh_gallery
 htdocs/images.v1
 *Thumbs.db
