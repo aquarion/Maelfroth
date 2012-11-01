@@ -40,6 +40,7 @@ if (isset($_GET['user'])){
 $result = $db->query($query);
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+
 	$date = date("D j\<\s\u\p\>S\<\/\s\u\p\> F", $row['time']);
 	if ($date != $datecache){
 		if ($datecache != ''){
@@ -50,6 +51,17 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 		$datecache = $date;
 		
 	}
+	
+	$time = date("H:i", $row['time']);
+	$user = $row['username'];
+		
+	if($row['checked_status'] != 0 && $row['checked_status'] != 200){
+		$time = "<strike>".$time;
+		$message = $row['message']."</strike> (Not working, last checked ".$row['checked_date'].")";
+		printf($tr, $time, $user, $message);
+		continue;
+	} 
+	
 	$time = date("H:i", $row['time']);
 	$user = $row['username'];
 	if ($row['shorturl']){
