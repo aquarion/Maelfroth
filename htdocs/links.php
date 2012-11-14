@@ -57,7 +57,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 		
 	if($row['checked_status'] != 0 && $row['checked_status'] != 200){
 		$time = "<strike>".$time;
-		$message = $row['message']."</strike> (Not working, last checked ".$row['checked_date'].")";
+		$message = $row['message']."</strike> (Not working (". $row['checked_status']."), last checked ".$row['checked_date'].")";
 		printf($tr, $time, $user, $message);
 		continue;
 	} 
