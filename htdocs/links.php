@@ -3,7 +3,14 @@
 $title = "Links";
 include("header.php");
 
+if(isset($_GET['channel'])){
+	$channel = addslashes($_GET['channel']);
+} else {
+	$channel = '#maelfroth';
+}
+
 $datecache = '';
+
 ?>
 
 
@@ -11,11 +18,16 @@ $datecache = '';
 
 <h1>Linkamatic</h1>
 
-<p class="intro">A list of links recently mentioned on #maelfroth. <b>Some of these may not be work-safe</b>, Caveat Clicktor.
+<p class="intro">A list of links recently mentioned on <?PHP echo $channel ?>. <b>Some of these may not be work-safe</b>, Caveat Clicktor.
 <p>
 
-
+<p>Change the channel: [
+	<a href="links.php?channel=%23maelfroth">Maelfroth</a>
+	| <a href="links.php?channel=%23empirefroth">Empirefroth</a>
+	]
+</p>
 <?PHP
+
 
 $tr = '<li><NOBR>%s</NOBR> [%s] %s</li>';
 
@@ -26,14 +38,14 @@ if (isset($_GET['month']) && isset($_GET['year'])){
 	$from = intval($_GET['year']).'-'.intval($_GET['month']).'-01T00:00';
 	$to = strtotime($from.' +1 Month');
 	$from = strtotime($from);
-	$query = "select * from urllist where time between ".$from." and  ".$to." and channel = '#maelfroth' order by time";	
+	$query = "select * from urllist where time between ".$from." and  ".$to." and channel = '".$channel."' order by time";	
 
 } else {
-	$query = "select * from urllist where channel = '#maelfroth' order by time desc limit 60";
+	$query = "select * from urllist where channel = '".$channel."' order by time desc limit 60";
 }
 
 if (isset($_GET['user'])){
-	$query = "select * from urllist where username = \"".addslashes($_GET['user'])."\" and channel = '#maelfroth' order by time desc";
+	$query = "select * from urllist where username = \"".addslashes($_GET['user'])."\" and channel = '".$channel."' order by time desc";
 }
 
 
@@ -104,7 +116,7 @@ while ($epoch < time()){
 		$yearcache = $year;
 		
 	}
-	printf('<a href="links.php?month=%02d&year=%04d">%s</a> ', $month, $year, date('F',$epoch));
+	printf('<a href="links.php?month=%02d&year=%04d&channel=%s">%s</a> ', $month, $year, urlencode($channel), date('F',$epoch));
 
 
 	//$epoch += 60*60*24*30;
