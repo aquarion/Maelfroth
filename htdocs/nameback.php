@@ -8,6 +8,9 @@ if (!file_exists($imagefile)){
 	$imagefile = 'gallery/empty.jpg';
 }
 
+$imagefile = 'http:'.$_GET['url'];
+#$imagefile = str_replace(" ", "%20", $imagefile);
+
 $size = 80;
 $font = 'font/renaissance.otf';
 #$font = "/var/www/hosts/archive/racer.aqxs.net/trunk/tests/Zend/Pdf/_fonts/Vera.ttf";
@@ -25,7 +28,7 @@ if (isset($_GET['regen'])){
 	header('X-Reflector-Regenerated: Regen Requested');
 }
 
-$cachefilename = '/maelfroth.org-card-'.md5($name);
+$cachefilename = '/maelfroth.org-card-'.md5($imagefile);
 
 if (file_exists(CACHEDIR.$cachefilename) && file_exists($imagefile)){
 
@@ -72,6 +75,10 @@ $gallery_max_w = 300;
 $gallery = imagecreatefromjpeg($imagefile);
 $orig_gal_x = imagesx ($gallery);
 $orig_gal_y = imagesy ($gallery);
+
+if(!$gallery){
+	die("Couldn't load image: ".$imagefile);
+}
 
 $gal_y = $orig_gal_y;
 $gal_x = $orig_gal_x;
