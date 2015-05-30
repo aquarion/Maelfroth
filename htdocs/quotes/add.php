@@ -33,8 +33,23 @@ form label {
 	width: 15em;
 }
 
+.failure {
+	border: 1px solid red;
+	color: red;
+	padding: 1em;
+	width: 15em;
+}
+
 .indented {
-	margin-left: 7.5em;
+}
+
+.captchabox {
+	margin-left: 5em;
+	 height: 5em; 
+}
+
+textarea {
+	background-color: rgba(255,255,255, .1);
 }
 
 </style>
@@ -60,40 +75,105 @@ form label {
 | score     | double unsigned     | NO   |     | 1                 |                |
 +-----------+---------------------+------+-----+-------------------+----------------+
 */
-if(isset($_POST['submit'])){
-	
-	$sql = "INSERT INTO chirpy.mf_quotes (body, notes) VALUES (?, ?)";
 
-	$stmt = $mysqli->prepare($sql) or die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
+
+function recaptcha(){
+	global $conf;
+	$url = 'https://www.google.com/recaptcha/api/siteverify';
+	$fields = array(
+		'secret' => $conf['recaptcha_secret'],
+		'response' => $_POST['g-recaptcha-response']
+	);
+
+
+	//open connection
+	$ch = curl_init();
+
+	//set the url, number of POST vars, POST data
+	curl_setopt($ch,CURLOPT_URL,$url);
+	curl_setopt($ch,CURLOPT_POST,count($fields));
+	curl_setopt($ch,CURLOPT_POSTFIELDS,$fields);
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,True);
+
+
+	//execute the post
+	$result = curl_exec($ch);
+
+	//close the connection
+	curl_close($ch);
+
+	return json_decode($result);
+}
+
+$form = True;
+
+if(isset($_POST['submit'])){
+
+	$recaptcha = recaptcha();
+
+	if(!isset($_POST['quote']) or !$_POST['quote']){
+		print '
+			<div class="failure">
+			<p>Please try that again</p>
+			<p>To say nothing is wisdom</p>
+			<p>But not quotable</p>
+			</div>
+			';
+	} elseif(!$recaptcha->success){
+		print '
+			<div class="failure">
+			<p>You have failed my test</p>
+			<p>That judges humanity</p>
+			<p>Try again, toaster</p>
+			</div>
+			';
+	} else {
 	
-	$stmt->bind_param("ss", $_POST['quote'], $_POST['comment']);
-	
-	$stmt->execute() or die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
-	
-	print '
-		<div class="success">
-		<p>Thank you for your quote.</p>
-		<p>It has been appended to</p>
-		<p>the queue for judgement</p>
-		</div>
-		<p>[<a href="index.php">Return to Quotes</a>]</p>
-		';
-} else {
+		// SQL
+		$sql = "INSERT INTO chirpy.mf_quotes (body, notes) VALUES (?, ?)";
+
+		$stmt = $mysqli->prepare($sql) or die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
+		
+		$stmt->bind_param("ss", $_POST['quote'], $_POST['comment']);
+		
+		$stmt->execute() or die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+		
+		$form = False;
+		print '
+			<div class="success">
+			<p>Thank you for your quote.</p>
+			<p>It has been appended to</p>
+			<p>the queue for judgement</p>
+			</div>
+			<p>[<a href="index.php">Return to Quotes</a>]</p>
+			';
+	}
+} 
+
+if ($form) {
 
 
 ?>
-
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<form method="POST" action="add.php">
 	<ul>
 		<li>
 			<label for="quote">Quote</label>
-			<textarea cols="100" rows="12" id="quote" name="quote" required="true"></textarea>
+			<textarea cols="100" rows="12" id="quote" name="quote" required="true"><?PHP 
+				echo isset($_POST['quote']) ? $_POST['quote'] : '' 
+			?></textarea>
 		</li>
 		<li>
 			<label for="comment">Comment</label>
-			<input name="comment" id="comment" type="text"/>
+			<input name="comment" id="comment" type="text" value="<?PHP echo isset($_POST['comment']) ? $_POST['comment'] : '' ?>"/>
 		</li>
-		<li>
+		<li style="clear: both;">
+			<label for="recapture">Humanity</label>
+			<div class="captchabox">
+				<div class="g-recaptcha" data-sitekey="<?PHP echo $conf['recaptcha_key']; ?>"></div>
+			</div>
+		</li>
+		<li style="clear: both;">
 			<label for="submit">&nbsp;</label>
 			<input name="submit" id="submit" type="submit" value="Submit for Judgement" />
 		</li>
