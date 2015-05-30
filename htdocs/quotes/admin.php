@@ -24,7 +24,7 @@ if(!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])){
 	}
 }
 
-if (!isset($_SERVER['PHP_AUTH_USER'])) {
+if (!$authed) {
     header('WWW-Authenticate: Basic realm="Review"');
     header('HTTP/1.0 401 Unauthorized');
     exit;
