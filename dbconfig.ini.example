@@ -1,0 +1,10 @@
+username = SECRET!
+password = SECRET!
+host = localhost
+database = maelfroth
+
+recaptcha_key = MINE!
+recaptcha_secret = SECRET!
+
+admin_user = admin
+admin_password = SECRET!
