@@ -65,7 +65,13 @@ if(isset($_GET['query'])){
 	$title = "Search for <q>".$_GET['query'].'</q>';
 }
 
-$sql = "select count(*) as count from chirpy.mf_quotes where $where order by submitted desc";
+$sql = "select count(*) as count from chirpy.mf_quotes where $where ";
+
+if(isset($_GET['random'])){
+	$sql .= 'order by RAND()';
+} else {
+	$sql .= 'order by submitted desc';
+}
 
 $stmt = $mysqli->prepare($sql) or die("Prepare1 failed: (" . $mysqli->errno . ") " . $mysqli->error.'<pre>'.$sql.'</pre>');
 if($search){
