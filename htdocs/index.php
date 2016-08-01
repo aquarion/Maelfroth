@@ -73,6 +73,7 @@ if($photocredit){
 $card .='	</dl>
 </div>';
 
+	$delta = 0;
 
 	if($delta > A_MONTH * 12){
 		$edgeoftheworld[] = $displayname;
