@@ -52,26 +52,20 @@ if ($mysqli->connect_errno) {
 <?PHP
 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$perpage = 50;
+$perpage = 1;
 $offset  = ($page - 1) * $perpage;
 
 $search = false;
-$title = "Recent Quotes";
 
-$where = 'approved = 1';
-if(isset($_GET['query'])){
-	$where .= " and body like ?";
-	$search = "%".$_GET['query']."%";
-	$title = "Search for <q>".$_GET['query'].'</q>';
-}
+$where = 'approved = 1 and id = ?';
 
 $sql = "select count(*) as count from chirpy.mf_quotes where $where ";
 
 $stmt = $mysqli->prepare($sql) or die("Prepare1 failed: (" . $mysqli->errno . ") " . $mysqli->error.'<pre>'.$sql.'</pre>');
-if($search){
-	$stmt->bind_param("s", $search);
-}
-$stmt->execute() or die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+
+$stmt->bind_param("d", $_GET['id']);
+
+$stmt->execute() or die("Execute1 failed: (" . $stmt->errno . ") " . $stmt->error);
 $result = $stmt->get_result() or die("Getting result set failed: (" . $stmt->errno . ") " . $stmt->error);
 
 
@@ -80,28 +74,13 @@ $row = $result->fetch_assoc();
 $count = $row['count'];
 $maxpages = intval($count/$perpage) + 1;
 
-if(isset($_GET['random'])){
-	$sort .= 'RAND()';
-	$title = "Random Quotes";
-} else {
-	$sort .= 'submitted desc';
-}
-
-$sql = "select * from chirpy.mf_quotes where $where order by $sort limit 50 offset ?";
+$sql = "select * from chirpy.mf_quotes where $where ";
 $stmt = $mysqli->prepare($sql) or die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
-if($search){
-	$stmt->bind_param("si", $search, $offset);
-} else {
-	$stmt->bind_param("i", $offset);
-}
+$stmt->bind_param("d", $_GET['id']);
 $stmt->execute() or die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
 $result = $stmt->get_result() or die("Getting result set failed: (" . $stmt->errno . ") " . $stmt->error);
 
 
-echo '<h2>'. $title .'</h2>';
-if ($offset){
-	echo '<p>Page '. $page .' of '.$maxpages.'</p>';
-} 
 echo "<dl>";
 
 while($row = $result->fetch_assoc()){
@@ -111,33 +90,5 @@ while($row = $result->fetch_assoc()){
 	echo "</div>";
 }
 
-?></dl><?php
-
-$prefix = "index.php?";
-
-if($search){
-	$prefix .= "query=".urlencode($_GET['query'])."&amp;page=";
-} else {
-	$prefix .= "page=";
-}
-
-?>
-<p>
-<?PHP if($page != 1){ ?>
-<a href="<?PHP echo $prefix."1" ?>">&lt;&lt; First</a>
-<?PHP } 
-if($page > 2 ){ ?>
-	<a href="<?PHP echo $prefix.($page-1); ?>">&lt; Back</a> 
-<?PHP } ?>
-
-Page <?PHP echo $page ?> of <?PHP echo intval($count/$perpage)+1;
-
-if (($page+1) < $maxpages) { ?>
-	<a href="<?PHP echo $prefix.($page+1); ?>">Next &gt;</a>
-<?PHP } 
-if($page < $maxpages && $maxpages > 1){ ?> 
- <a href="<?PHP echo $prefix.($maxpages); ?>">Last &gt;&gt;</a>
-<?PHP } ?>
-</p>
-
+?></dl>
 </div>
