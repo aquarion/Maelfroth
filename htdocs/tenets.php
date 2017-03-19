@@ -101,7 +101,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)){
 }
 
 foreach($tenets as $setname => $set){
-	echo "<h2>$setname</h2>";
+	$hash = substr(sha1($setname),0,7);
+	echo "<h2><a name=\"".$hash."\" href=\"#".$hash."\">#</a> $setname</h2>";
 	echo "<dl>\n";
 
 
