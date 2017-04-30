@@ -29,7 +29,7 @@ $datecache = '';
 <?PHP
 
 
-$tr = '<li><NOBR>%s</NOBR> [%s] %s</li>';
+$tr = '<li><NOBR>%s</NOBR> [%s] %s</li>'."\n";
 
 $conf = parse_ini_file("../dbconfig.ini");
 $db = new PDO('mysql:dbname='.$conf['database'], $conf['username'], $conf['password']);
@@ -52,6 +52,8 @@ if (isset($_GET['user'])){
 $result = $db->query($query);
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+	$row['message'] = htmlspecialchars($row['message']);
 
 	$date = date("D j\<\s\u\p\>S\<\/\s\u\p\> F", $row['time']);
 	if ($date != $datecache){
