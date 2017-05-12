@@ -45,6 +45,17 @@
 		.boxothing h1, .boxothing .thing {
 			text-shadow: 2px 2px 3px rgba(0,0,0,.3);
 		}
+
+		@media (max-width: 767px) {
+		    .row.vertical-align {
+		        display: block; /* Turn off the flexible box layout */
+		        padding-top: 2em;
+		    }
+		    .thing {
+
+			font-size: 24pt;
+		    }
+		}
 		</style>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,7 +66,7 @@
 	</head>
 	<body>
 		<div class="row  vertical-align">
-			<div class="col-xs-8 col-sm-10 col-md-8 col-lg-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 text-center boxothing">
+			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 text-center boxothing">
 				<h1 class="text-center">You have forgotten</h1>
 				<p class="thing">
 				<?PHP
