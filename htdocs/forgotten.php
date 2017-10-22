@@ -1,9 +1,11 @@
 <<!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB"xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta property="og:image" content="https://art.istic.net/maelfroth/forgotten.jpg" />
 		<title>What have I forgotten to pack?</title>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -11,11 +13,10 @@
 		<style type="text/css">
 		
 		body { 
-			background: url(' http://www.aquarionics.com/files/2015/04/2015-04-01-20.01.00.jpg ') fixed; 
+			background: url('https://art.istic.net/maelfroth/forgotten.jpg') fixed; 
 			background-position: center;
 			background-repeat: no-repeat; 
 			background-size: cover; 
-			background-image: url("https://art.istic.net/maelfroth/forgotten.jpg");
 			font-family: 'Inknut Antiqua', serif;
 			/*font-family: 'Gloria Hallelujah', cursive;
 			font-family: 'Chonburi', cursive;
