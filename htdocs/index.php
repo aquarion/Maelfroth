@@ -14,6 +14,8 @@ include("photographers.php"); # Array of photography credits
 
 <div id="content">
 
+<div style="border: 2px solid black">Maelfroth.org is going to shut down at the end of May 2020</div>
+
 <p class="intro">Being a concise and possibly even accurate collection of residents of the world beyond the Maelfroth.</p>
 <p>
 
